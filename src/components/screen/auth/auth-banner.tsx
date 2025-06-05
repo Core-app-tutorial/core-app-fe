@@ -24,6 +24,7 @@ const AuthBanner: React.FC = () => {
         type: "spring",
         stiffness: 300,
         damping: 30,
+        duration: 0.5,
       }}
     >
       <motion.div
@@ -31,7 +32,7 @@ const AuthBanner: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.1 }}
+        transition={{ duration: 0.3 }}
         className="text-center space-y-6 p-8 max-w-4xl"
       >
         <Image

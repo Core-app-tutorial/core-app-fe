@@ -28,34 +28,12 @@ const RegisterForm = () => {
         }}
       />
 
-      <h1 className="text-3xl font-bold">Register to Continue</h1>
-
-      <div className="w-full max-w-sm space-y-4">
-        <Button className="w-full py-5" variant="outline">
-          <div className="flex  justify-between w-full">
-            <Image
-              src="/google.svg"
-              alt="Google Logo"
-              width={16}
-              height={16}
-              className="inline mr-2"
-            />
-            <span>Log in with Google</span>
-            <div></div>
-          </div>
-        </Button>
-      </div>
-
-      <h3 className="flex items-center w-full max-w-sm gap-4 text-muted-foreground uppercase text-sm">
-        <div className="flex-1 h-[1px] bg-border" />
-        Or register with Email
-        <div className="flex-1 h-[1px] bg-border" />
-      </h3>
+      <h1 className="text-3xl font-bold">Sign up to continue</h1>
 
       <Form {...form}>
         <form
           onSubmit={onSubmit}
-          className="flex flex-col gap-4 w-full max-w-sm space-y-1"
+          className="flex flex-col  w-full max-w-sm gap-3"
         >
           <FormInput
             name="name"
@@ -104,6 +82,28 @@ const RegisterForm = () => {
           </Button>
         </form>
       </Form>
+
+      <h3 className="flex items-center w-full max-w-sm gap-4 text-muted-foreground uppercase text-sm">
+        <div className="flex-1 h-[1px] bg-border" />
+        Or register with Email
+        <div className="flex-1 h-[1px] bg-border" />
+      </h3>
+
+      <div className="w-full max-w-sm space-y-4">
+        <Button className="w-full py-5" variant="outline">
+          <div className="flex  justify-between w-full">
+            <Image
+              src="/google.svg"
+              alt="Google Logo"
+              width={16}
+              height={16}
+              className="inline mr-2"
+            />
+            <span>Log in with Google</span>
+            <div></div>
+          </div>
+        </Button>
+      </div>
 
       <span className="text-sm text-muted-foreground font-semibold">
         Already have an account?&nbsp;

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import React from "react";
 
 interface SplashScreenProps {
   onAnimationComplete?: () => void;
@@ -9,6 +10,13 @@ interface SplashScreenProps {
 export default function SplashScreen({
   onAnimationComplete,
 }: SplashScreenProps) {
+  // Scroll to the top of the page when the splash screen is mounted
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, []);
+
   return (
     <motion.div
       className="fixed inset-0 bg-black text-white flex items-center justify-center z-50"

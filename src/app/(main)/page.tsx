@@ -1,4 +1,5 @@
 import SplashWrapper from "@/components/providers/splash-wrapper";
+import Section from "@/components/screen/home/section";
 import { cookies } from "next/headers";
 
 async function getHasSeenSplash() {
@@ -10,7 +11,6 @@ export default async function HomePage() {
   const hasSeenSplash = await getHasSeenSplash();
 
   if (!hasSeenSplash) {
-    // Chưa xem splash: render splash wrapper client component với nội dung con là main content
     return (
       <SplashWrapper>
         <MainContent />
@@ -18,15 +18,15 @@ export default async function HomePage() {
     );
   }
 
-  // Đã xem splash, render content luôn
   return <MainContent />;
 }
 
 function MainContent() {
   return (
     <main className="p-8">
-      <h1 className="text-4xl font-bold">Chào mừng đến với trang chính!</h1>
-      <p>Đây là nội dung chính sau splash.</p>
+      <Section />
+      <Section />
+      <Section />
     </main>
   );
 }

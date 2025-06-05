@@ -2,12 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Button } from "../ui/button";
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface AuthTemplateProps {
   children: React.ReactNode;
 }
 
 const AuthTemplate: React.FC<AuthTemplateProps> = ({ children }) => {
+  const router = useRouter();
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -22,7 +27,16 @@ const AuthTemplate: React.FC<AuthTemplateProps> = ({ children }) => {
 
   return (
     <section className="min-h-screen relative px-4">
-      <div className="space-y-6 w-full md:max-w-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="space-y-6 w-full md:max-w-5xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <Button
+          className="absolute top-4 left-4 z-20 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors rounded-full"
+          variant="link"
+          size={"icon"}
+          onClick={() => router.replace("/")}
+        >
+          <ArrowLeft />
+          <span className="hidden font-semibold">Back</span>
+        </Button>
         <motion.div
           variants={containerVariants}
           initial="hidden"
