@@ -1,10 +1,11 @@
 "use client";
 
-import type React from "react";
-
+import React from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { AnimatedBlob } from "@/components/atoms/animated-blob";
 
 const AuthBanner: React.FC = () => {
   const pathname = usePathname();
@@ -27,23 +28,31 @@ const AuthBanner: React.FC = () => {
         duration: 0.5,
       }}
     >
+      <div
+        className={cn("absolute", isLogin ? "inset-24" : "bottom-24 left-1")}
+      >
+        <AnimatedBlob fill="#082f49" />
+      </div>
       <motion.div
         key={isLogin ? "register-banner" : "login-banner"}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
-        className="text-center space-y-6 p-8 max-w-4xl"
+        className="text-center space-y-6 p-8 max-w-4xl absolute"
       >
         <Image
           src="/workingperson.svg"
           alt="Working Person"
           width={1200}
           height={900}
-          className="mx-auto object-cover w-full h-auto max-w-xs md:max-w-sm"
+          className={cn(
+            "relative z-10 mx-auto object-cover w-full h-auto max-w-xs md:max-w-sm",
+            !isLogin && "scale-x-[-1]"
+          )}
           style={{
-            maxWidth: "30rem",
-            maxHeight: "30rem",
+            maxWidth: "28rem",
+            maxHeight: "28rem",
           }}
         />
       </motion.div>

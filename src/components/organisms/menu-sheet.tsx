@@ -52,6 +52,7 @@ const MenuSheet = () => {
             alt="Auth Left Image"
             width={200}
             height={200}
+            priority
             className="w-full h-full object-cover "
             style={{
               maxWidth: "4rem",

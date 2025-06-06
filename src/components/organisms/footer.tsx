@@ -14,7 +14,7 @@ export default function AnimatedWaveFooter() {
   return (
     <footer className="relative  bg-zinc-900/50 dark:bg-slate-900/50 pt-20">
       {/* Wave animation */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="relative flex w-[3600px] animate-wave">
           {[...Array(2)].map((_, i) => (
             <svg
@@ -36,7 +36,7 @@ export default function AnimatedWaveFooter() {
             </svg>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Footer content */}
       <div
