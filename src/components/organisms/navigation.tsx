@@ -8,11 +8,15 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Stack from "../atoms/stack";
 import { useTheme } from "../providers/theme-provider";
-import { Button } from "../ui/button";
 import MenuSheet from "./menu-sheet";
+import { Button } from "../ui/button";
+import { useAuthContext } from "../context/auth-context";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
+  const { isAuthenticated } = useAuthContext();
+  console.log("isAuthenticated", isAuthenticated);
+
   const isVisible = useScrollState();
   const router = useRouter();
 
@@ -95,19 +99,23 @@ export default function Navigation() {
                 )}
               </motion.button>
 
-              <Button
-                className="rounded-4xl gap-0"
-                variant="outline"
-                onClick={() => router.push("/login")}
-                aria-label="Login"
-              >
-                <span className="ml-2">Login</span>
-                <Icon
-                  icon="iconoir:nav-arrow-right-solid"
-                  width={16}
-                  height={16}
-                />
-              </Button>
+              {!isAuthenticated ? (
+                <Button
+                  className="rounded-4xl liquid-button"
+                  variant="outline"
+                  onClick={() => router.push("/login")}
+                  aria-label="Login"
+                >
+                  <span className="ml-2">Login</span>
+                  <Icon
+                    icon="iconoir:nav-arrow-right-solid"
+                    width={16}
+                    height={16}
+                  />
+                </Button>
+              ) : (
+                <span>Đã Đăng nhập</span>
+              )}
             </Stack>
           </div>
         </div>

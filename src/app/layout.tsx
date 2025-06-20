@@ -4,6 +4,8 @@ import "./globals.css";
 import ReactQueryProviders from "@/components/providers/query-client-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Background from "@/components/organisms/background";
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/components/context/auth-context";
 
 const inter = Space_Grotesk({
   subsets: ["latin"],
@@ -26,8 +28,11 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <ReactQueryProviders>
-          <Background />
-          <ThemeProvider>{children}</ThemeProvider>
+          <AuthProvider>
+            <Background />
+            <ThemeProvider>{children}</ThemeProvider>
+            <Toaster />
+          </AuthProvider>
         </ReactQueryProviders>
       </body>
     </html>

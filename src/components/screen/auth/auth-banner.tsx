@@ -6,10 +6,16 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { AnimatedBlob } from "@/components/atoms/animated-blob";
+import { useTheme } from "@/components/providers/theme-provider";
+import { themeColors } from "@/constants/color/theme";
 
 const AuthBanner: React.FC = () => {
   const pathname = usePathname();
+  const { theme } = useTheme();
   const isLogin = pathname === "/login";
+
+  const themeBlobColor =
+    theme === "dark" ? themeColors.BlueAbyss : themeColors.GrayAbyss;
 
   return (
     <motion.div
@@ -25,13 +31,16 @@ const AuthBanner: React.FC = () => {
         type: "spring",
         stiffness: 300,
         damping: 30,
-        duration: 0.5,
+        duration: 0.2,
       }}
     >
       <div
-        className={cn("absolute", isLogin ? "inset-24" : "bottom-24 left-1")}
+        className={cn(
+          "absolute",
+          isLogin ? "bottom-16 right-1 scale-x-[-1]" : "bottom-24 left-1"
+        )}
       >
-        <AnimatedBlob fill="#082f49" />
+        <AnimatedBlob fill={themeBlobColor} />
       </div>
       <motion.div
         key={isLogin ? "register-banner" : "login-banner"}

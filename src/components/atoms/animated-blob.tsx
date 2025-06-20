@@ -17,8 +17,8 @@ interface AnimatedBlobProps {
 }
 
 export const AnimatedBlob: React.FC<AnimatedBlobProps> = ({
-  width = 400,
-  height = 400,
+  width = 550,
+  height = 550,
   fill = "#FF0066",
 }) => {
   const [index, cycleIndex] = useCycle(0, 1, 2, 3);
@@ -29,9 +29,9 @@ export const AnimatedBlob: React.FC<AnimatedBlobProps> = ({
         fill={fill}
         d={paths[index]}
         animate={{ d: paths[(index + 1) % paths.length] }}
-        transition={{ duration: 2, ease: "easeInOut" }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
         onAnimationComplete={() => cycleIndex()}
-        transform="translate(100 100)"
+        transform="translate(80 120)"
       />
     </svg>
   );

@@ -1,10 +1,12 @@
 "use client";
 
 import { FormInput } from "@/components/atoms/form-input";
+import { WaveText } from "@/components/atoms/text/wave";
 import { useTheme } from "@/components/providers/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAuthForm } from "@/features/auth/hooks/use-auth-form";
+import { cn } from "@/lib/utils";
 import { EyeOff, EyeIcon, Mail, Lock, ArrowRight, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +15,7 @@ import React from "react";
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const { theme } = useTheme();
-  const { form, onSubmit } = useAuthForm({ type: "register" });
+  const { form, onSubmit, isPending } = useAuthForm({ type: "register" });
   return (
     <div className="flex flex-col items-center justify-center px-4 space-y-4">
       <Image
@@ -73,12 +75,23 @@ const RegisterForm = () => {
             }
           />
 
-          <Button className="py-5 justify-between">
-            <div></div>
-            <div>
-              {form.formState.isSubmitting ? "Logging in..." : "Sign up"}
-            </div>
-            <ArrowRight className="size-4" />
+          <Button
+            className={cn(
+              "py-5",
+              isPending ? "justify-center" : "justify-between"
+            )}
+            disabled={isPending}
+            type="submit"
+          >
+            {isPending ? (
+              <WaveText>Signing up...</WaveText>
+            ) : (
+              <>
+                <div></div>
+                <p>Sign up</p>
+                <ArrowRight className="size-4" />
+              </>
+            )}
           </Button>
         </form>
       </Form>

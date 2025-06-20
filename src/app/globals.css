@@ -76,6 +76,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --liquid-button-fill: 0%;
+  --liquid-button-delay: 0s;
 }
 
 .dark {
@@ -110,6 +113,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
 }
 
 @layer base {
@@ -348,4 +352,81 @@ textarea:focus-visible {
 }
 .animate-wave {
   animation: wave 15s linear infinite;
+}
+
+/* Liquid */
+
+.liquid-button {
+  position: relative;
+  overflow: hidden;
+  --liquid-color: var(--primary);
+  --liquid-text-color: var(--foreground);
+
+  --liquid-fill-x: 0%;
+  --liquid-fill-y: 0%;
+
+  --liquid-delay-x: 0s;
+  --liquid-delay-y: 0s;
+  --liquid-delay-color: 0s;
+
+
+  background:
+    linear-gradient(var(--liquid-color) 0 0) no-repeat calc(200% - var(--liquid-fill-x, 0%)) 100% / 200% 2px,
+    linear-gradient(var(--liquid-color) 0 0) no-repeat 0 calc(0% + var(--liquid-fill-y, 100%)) / 100% var(--liquid-fill-y, 0%);
+
+  transition:
+    background-position 0.3s var(--liquid-delay-x),
+    background-size 0.3s var(--liquid-delay-y),
+    color 0.3s var(--liquid-delay-color);
+}
+
+/* Hover: X (ngang) trước, Y (dọc) sau */
+.liquid-button:hover {
+  color: var(--background);
+
+  --liquid-fill-x: 100%;
+  --liquid-fill-y: 100%;
+
+  --liquid-delay-x: 0s;
+  --liquid-delay-y: 0.3s;
+  --liquid-delay-color: 0.3s;
+
+}
+
+/* Default (rút lại): Y rút trước, X rút sau */
+.liquid-button:not(:hover) {
+  color: var(--foreground);
+
+  --liquid-fill-x: 0%;
+  --liquid-fill-y: 0%;
+
+  --liquid-delay-x: 0.3s;
+  --liquid-delay-y: 0s;
+  --liquid-delay-color: 0s;
+}
+
+
+/* wave text */
+.wave-text {
+  position: relative;
+  display: inline-block;
+  color: var(--background);
+  background: linear-gradient(to right,
+      var(--foreground) 40%,
+      var(--muted) 60%,
+      var(--background) 80%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: wave-glow 1.5s infinite linear;
+}
+
+@keyframes wave-glow {
+  from {
+    background-position: -100% center;
+  }
+
+  to {
+    background-position: 100% center;
+  }
 }

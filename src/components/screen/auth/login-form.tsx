@@ -2,12 +2,14 @@
 
 import { FormInput } from "@/components/atoms/form-input";
 import Stack from "@/components/atoms/stack";
+import { WaveText } from "@/components/atoms/text/wave";
 import { useTheme } from "@/components/providers/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { useAuthForm } from "@/features/auth/hooks/use-auth-form";
+import { cn } from "@/lib/utils";
 import { EyeOff, EyeIcon, Mail, Lock, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +18,7 @@ import React from "react";
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const { theme } = useTheme();
-  const { form, onSubmit } = useAuthForm({ type: "login" });
+  const { form, onSubmit, isPending } = useAuthForm({ type: "login" });
 
   return (
     <div className="flex flex-col items-center justify-center px-4 space-y-4">
@@ -83,12 +85,23 @@ const LoginForm = () => {
             </Link>
           </Stack>
 
-          <Button className="py-5 justify-between">
-            <div></div>
-            <div>
-              {form.formState.isSubmitting ? "Logging in..." : "Sign in"}
-            </div>
-            <ArrowRight className="size-4" />
+          <Button
+            className={cn(
+              "py-5",
+              isPending ? "justify-center" : "justify-between"
+            )}
+            disabled={isPending}
+            type="submit"
+          >
+            {isPending ? (
+              <WaveText>Logging in...</WaveText>
+            ) : (
+              <>
+                <div></div>
+                <p>Sign in</p>
+                <ArrowRight className="size-4" />
+              </>
+            )}
           </Button>
         </form>
       </Form>
@@ -118,7 +131,7 @@ const LoginForm = () => {
       <span className="text-sm text-muted-foreground font-semibold">
         Don&apos;t have an account yet?&nbsp;
         <Link href="/register" className="text-primary underline font-semibold">
-          Sign Up
+          Register
         </Link>
       </span>
     </div>
