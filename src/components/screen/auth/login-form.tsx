@@ -3,7 +3,7 @@
 import { FormInput } from "@/components/atoms/form-input";
 import Stack from "@/components/atoms/stack";
 import { WaveText } from "@/components/atoms/text/wave";
-import { useTheme } from "@/components/providers/theme-provider";
+import { useTheme } from "@/components/context/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";

@@ -10,7 +10,7 @@ export default function MainLayout({
   return (
     <div className=" text-gray-900 dark:text-white relative">
       <Navigation />
-      <main className="mt-16 min-h-screen">{children}</main>
+      <main className=" min-h-screen">{children}</main>
       <ScrollOnTopButton />
       <AnimatedWaveFooter />
     </div>

@@ -9,6 +9,7 @@ export const axiosClient = axios.create({
   headers: {
     "Content-Type": "application/json",
     Accept: "*/*",
+    "Cache-Control": "no-cache",
   },
 });
 

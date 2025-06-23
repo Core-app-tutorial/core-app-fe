@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { AnimatedBlob } from "@/components/atoms/animated-blob";
-import { useTheme } from "@/components/providers/theme-provider";
+import { useTheme } from "@/components/context/theme-provider";
 import { themeColors } from "@/constants/color/theme";
 
 const AuthBanner: React.FC = () => {
@@ -20,7 +20,7 @@ const AuthBanner: React.FC = () => {
   return (
     <motion.div
       key={`banner-${isLogin ? "login" : "register"}`}
-      className="hidden md:flex absolute inset-0 w-1/2 items-center justify-center text-white z-10 overflow-hidden dark:bg-slate-900"
+      className="hidden md:flex absolute inset-0 w-1/2 items-center justify-center text-white z-10 overflow-hidden dark:bg-slate-900 backdrop-blur"
       initial={{
         x: isLogin ? "0%" : "100%",
       }}

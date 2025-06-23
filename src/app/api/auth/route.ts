@@ -12,18 +12,28 @@ export async function GET() {
       accessToken: null,
     });
   } else {
-    return NextResponse.json({
-      success: true,
-      accessToken,
-      message: "Access token found",
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        accessToken,
+        message: "Access token found",
+      },
+      {
+        headers: {
+          "Cache-Control": "no-store",
+        },
+      }
+    );
   }
 }
 
 export async function POST(req: NextRequest) {
   const { accessToken, refreshToken } = await req.json();
 
-  const res = NextResponse.json({ success: true });
+  const res = NextResponse.json({
+    success: true,
+    headers: { "Cache-Control": "no-store" },
+  });
 
   res.cookies.set({
     name: "accessToken",
@@ -45,7 +55,12 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE() {
-  const res = NextResponse.json({ success: true });
+  const res = NextResponse.json({
+    success: true,
+    headers: {
+      "Cache-Control": "no-store",
+    },
+  });
 
   res.cookies.delete({
     name: "accessToken",

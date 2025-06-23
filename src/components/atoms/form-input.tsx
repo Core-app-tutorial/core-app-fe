@@ -6,10 +6,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
 
-interface FormInputProps<T extends FieldValues> {
+interface FormInputProps<T extends FieldValues>
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   name: FieldPath<T>;
   control: Control<T>;
   label?: string;
@@ -27,6 +28,8 @@ export function FormInput<T extends FieldValues>({
   type = "text",
   iconLeft,
   iconRight,
+  autoComplete,
+  ...props
 }: FormInputProps<T>) {
   return (
     <FormField
@@ -38,9 +41,11 @@ export function FormInput<T extends FieldValues>({
           <div className="relative">
             <FormControl>
               <Input
+                {...props}
                 {...field}
                 type={type}
                 placeholder={placeholder}
+                autoComplete={autoComplete}
                 className={`peer ${iconLeft ? "ps-9" : ""} ${
                   iconRight ? "pe-9" : ""
                 }`}

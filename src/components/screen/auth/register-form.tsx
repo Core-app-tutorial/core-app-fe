@@ -2,7 +2,7 @@
 
 import { FormInput } from "@/components/atoms/form-input";
 import { WaveText } from "@/components/atoms/text/wave";
-import { useTheme } from "@/components/providers/theme-provider";
+import { useTheme } from "@/components/context/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAuthForm } from "@/features/auth/hooks/use-auth-form";

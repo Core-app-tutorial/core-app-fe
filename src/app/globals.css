@@ -113,7 +113,6 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-
 }
 
 @layer base {
@@ -369,13 +368,12 @@ textarea:focus-visible {
   --liquid-delay-y: 0s;
   --liquid-delay-color: 0s;
 
+  background: linear-gradient(var(--liquid-color) 0 0) no-repeat
+      calc(200% - var(--liquid-fill-x, 0%)) 100% / 200% 2px,
+    linear-gradient(var(--liquid-color) 0 0) no-repeat 0
+      calc(0% + var(--liquid-fill-y, 100%)) / 100% var(--liquid-fill-y, 0%);
 
-  background:
-    linear-gradient(var(--liquid-color) 0 0) no-repeat calc(200% - var(--liquid-fill-x, 0%)) 100% / 200% 2px,
-    linear-gradient(var(--liquid-color) 0 0) no-repeat 0 calc(0% + var(--liquid-fill-y, 100%)) / 100% var(--liquid-fill-y, 0%);
-
-  transition:
-    background-position 0.3s var(--liquid-delay-x),
+  transition: background-position 0.3s var(--liquid-delay-x),
     background-size 0.3s var(--liquid-delay-y),
     color 0.3s var(--liquid-delay-color);
 }
@@ -390,7 +388,6 @@ textarea:focus-visible {
   --liquid-delay-x: 0s;
   --liquid-delay-y: 0.3s;
   --liquid-delay-color: 0.3s;
-
 }
 
 /* Default (rút lại): Y rút trước, X rút sau */
@@ -405,16 +402,17 @@ textarea:focus-visible {
   --liquid-delay-color: 0s;
 }
 
-
 /* wave text */
 .wave-text {
   position: relative;
   display: inline-block;
   color: var(--background);
-  background: linear-gradient(to right,
-      var(--foreground) 40%,
-      var(--muted) 60%,
-      var(--background) 80%);
+  background: linear-gradient(
+    to right,
+    var(--foreground) 40%,
+    var(--muted) 60%,
+    var(--background) 80%
+  );
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -429,4 +427,29 @@ textarea:focus-visible {
   to {
     background-position: 100% center;
   }
+}
+
+/* Autofill styles (Google suggestions) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input) inset !important;
+  -webkit-text-fill-color: var(--foreground) !important;
+  transition: background-color 9999s ease-in-out 0s; /* trick giữ màu */
+  border: 1px solid var(--border);
+  caret-color: var(--foreground);
+}
+
+/* Dark mode autofill override */
+.dark input:-webkit-autofill,
+.dark textarea:-webkit-autofill,
+.dark select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input) inset !important;
+  -webkit-text-fill-color: var(--foreground) !important;
 }

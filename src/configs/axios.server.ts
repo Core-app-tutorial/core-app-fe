@@ -1,10 +1,10 @@
 import axios from "axios";
 import { cookies } from "next/headers";
 
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+const baseURL = "http://localhost:8000";
 
 export const getServerAxios = async () => {
-  const token = (await cookies()).get("token")?.value;
+  const token = (await cookies()).get("accessToken")?.value;
 
   return axios.create({
     baseURL,
@@ -14,6 +14,7 @@ export const getServerAxios = async () => {
       Authorization: token ? `Bearer ${token}` : "",
       "Content-Type": "application/json",
       Accept: "*/*",
+      "Cache-Control": "no-cache",
     },
   });
 };

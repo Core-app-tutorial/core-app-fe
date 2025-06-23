@@ -11,7 +11,7 @@ import {
 } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
-import { useTheme } from "../providers/theme-provider";
+import { useTheme } from "../context/theme-provider";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 

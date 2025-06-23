@@ -1,43 +1,36 @@
 "use client";
 
+import { getUserProfile } from "@/app/api/user/action";
+import { UserProfile } from "@/features/user/models/response";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type AuthContextType = {
+  user: UserProfile | null;
   isAuthenticated: boolean;
   logout: () => void;
   setAuthenticated: (value: boolean) => void; // Optional setter for testing purposes
 };
 
 const AuthContext = createContext<AuthContextType>({
+  user: null,
   isAuthenticated: false,
   logout: () => {},
   setAuthenticated: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<UserProfile | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
-      try {
-        const response = await fetch("/api/auth", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+      const response = await getUserProfile();
 
-        if (response.ok) {
-          const data = await response.json();
-
-          console.log("Authentication check response:", data);
-
-          setIsAuthenticated(data.success);
-        } else {
-          setIsAuthenticated(false);
-        }
-      } catch (error) {
-        console.error("Error checking authentication:", error);
+      if (response.isSuccess && response.value) {
+        setUser(response.value);
+        setIsAuthenticated(true);
+      } else {
+        setUser(null);
         setIsAuthenticated(false);
       }
     };
@@ -69,7 +62,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, logout, setAuthenticated }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, logout, setAuthenticated, user }}
+    >
       {children}
     </AuthContext.Provider>
   );
