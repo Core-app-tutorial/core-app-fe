@@ -31,12 +31,12 @@ export const useAuthForm = ({ type }: UseAuthForm) => {
           {
             email: data.email!,
             password: data.password!,
+          },
+          {
+            onSuccess: () => {
+              form.reset();
+            },
           }
-          // {
-          //   onSuccess: () => {
-          //     // form.reset();
-          //   },
-          // }
         );
 
         break;

@@ -3,11 +3,9 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ReactQueryProviders from "@/components/context/query-client-provider";
 import { ThemeProvider } from "@/components/context/theme-provider";
-import Background from "@/components/organisms/background";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/components/context/auth-context";
 import { ScrollProvider } from "@/components/context/scroll-context";
-import { SplashProvider } from "@/components/context/splash-provider";
 
 const inter = Space_Grotesk({
   subsets: ["latin"],
@@ -33,8 +31,8 @@ export default function RootLayout({
           <AuthProvider>
             <ScrollProvider>
               <ThemeProvider>
-                <Background />
-                <SplashProvider>{children}</SplashProvider>
+                {children}
+                {/* <SplashProvider>{children}</SplashProvider> */}
                 <Toaster />
               </ThemeProvider>
             </ScrollProvider>

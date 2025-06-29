@@ -4,7 +4,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 
 import { motion } from "framer-motion";
-import { useTheme } from "../context/theme-provider";
+import { useTheme } from "@/components/context/theme-provider";
 
 const ToggleTheme = () => {
   const { theme, toggleTheme } = useTheme();

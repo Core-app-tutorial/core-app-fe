@@ -83,10 +83,19 @@ const ChromaKeyVideo: React.FC<ChromaKeyVideoProps> = ({
   return (
     <article
       className={className}
-      style={{ position: "relative", display: "inline-block" }}
+      style={{
+        position: "relative",
+        display: "inline-block",
+        objectFit: "cover",
+      }}
     >
-      <video ref={videoRef} style={{ display: "none" }} />
       <canvas ref={canvasRef} />
+      <video
+        ref={videoRef}
+        style={{ display: "none" }}
+        crossOrigin="anonymous"
+        preload="auto"
+      />
     </article>
   );
 };

@@ -1,9 +1,9 @@
 "use client";
 
 import { FormInput } from "@/components/atoms/form-input";
-import Stack from "@/components/atoms/stack";
+import Logo from "@/components/atoms/image/logo";
+import Stack from "@/components/atoms/layout/stack";
 import { WaveText } from "@/components/atoms/text/wave";
-import { useTheme } from "@/components/context/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form } from "@/components/ui/form";
@@ -17,22 +17,11 @@ import React from "react";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
-  const { theme } = useTheme();
   const { form, onSubmit, isPending } = useAuthForm({ type: "login" });
 
   return (
     <div className="flex flex-col items-center justify-center px-4 space-y-4">
-      <Image
-        src={theme === "dark" ? "/logo-white-text.svg" : "/logo-dark-text.svg"}
-        alt="Auth Left Image"
-        width={200}
-        height={200}
-        className="w-full h-full object-cover"
-        style={{
-          maxWidth: "7rem",
-          maxHeight: "7rem",
-        }}
-      />
+      <Logo />
 
       <h1 className="text-3xl font-bold">Welcome Back</h1>
 

@@ -13,31 +13,6 @@ export default function AnimatedWaveFooter() {
 
   return (
     <footer className="relative  bg-zinc-900/50 dark:bg-slate-900/50 pt-20">
-      {/* Wave animation */}
-      {/* <div className="absolute inset-0 overflow-hidden">
-        <div className="relative flex w-[3600px] animate-wave">
-          {[...Array(2)].map((_, i) => (
-            <svg
-              key={i}
-              className="h-[500px] w-[1800px] shrink-0"
-              viewBox="0 0 1800 500"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0 250C200 150 400 50 600 100C800 150 1000 350 1200 300C1400 250 1600 150 1800 250V500H0V250Z"
-                fill="currentColor"
-                className="text-primary/5"
-              />
-              <path
-                d="M0 250C200 200 400 100 600 150C800 200 1000 350 1200 300C1400 250 1600 200 1800 250V500H0V250Z"
-                fill="currentColor"
-                className="text-primary/10"
-              />
-            </svg>
-          ))}
-        </div>
-      </div> */}
-
       {/* Footer content */}
       <div
         ref={contentRef}

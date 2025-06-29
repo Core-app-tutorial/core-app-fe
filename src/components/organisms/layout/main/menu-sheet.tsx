@@ -2,18 +2,19 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+
+import Image from "next/image";
+import { Menu } from "lucide-react";
+import { useTheme } from "@/components/context/theme-provider";
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetHeader,
   SheetTrigger,
-} from "../ui/sheet";
-import { Button } from "../ui/button";
-import { Menu } from "lucide-react";
-import { useTheme } from "../context/theme-provider";
-import Image from "next/image";
-import { Separator } from "../ui/separator";
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const MenuSheet = () => {
   const { theme } = useTheme();

@@ -10,7 +10,7 @@ import { useAuthContext } from "@/components/context/auth-context";
 
 export const useAuthMutation = () => {
   const redirect = useRouter();
-  const { setAuthenticated } = useAuthContext();
+  const { setAuthenticated, refetch } = useAuthContext();
 
   const loginMutation = useMutation({
     mutationKey: [QUERY_KEY.Auth.Login],
@@ -31,6 +31,7 @@ export const useAuthMutation = () => {
           }),
         });
         setAuthenticated(true);
+        await refetch();
       }
 
       // Dismiss the toast after a short delay
@@ -52,7 +53,7 @@ export const useAuthMutation = () => {
     mutationKey: [QUERY_KEY.Auth.Register],
     mutationFn: async (req: RegisterRequest) => await AuthService.register(req),
 
-    onSuccess: () => {
+    onSuccess: async () => {
       toast("Registration successful", {
         description: "Login with your new account.",
         action: {
@@ -61,6 +62,9 @@ export const useAuthMutation = () => {
         },
         position: "top-center",
       });
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      redirect.replace("/login");
     },
     onError: (error: AxiosError<Result<null>>) => {
       toast.error(

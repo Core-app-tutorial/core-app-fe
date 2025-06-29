@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -76,7 +77,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-
   --liquid-button-fill: 0%;
   --liquid-button-delay: 0s;
 }
@@ -128,19 +128,15 @@
   .text-balance {
     text-wrap: balance;
   }
-
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-
   .animation-delay-400 {
     animation-delay: 400ms;
   }
-
   .animation-delay-600 {
     animation-delay: 600ms;
   }
-
   .animation-delay-800 {
     animation-delay: 800ms;
   }
@@ -333,11 +329,8 @@ textarea:focus-visible {
 
 /* Background grid pattern */
 .grid-background {
-  background-image: linear-gradient(
-      rgba(59, 130, 246, 0.1) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(var(--muted) 1px, transparent 1px),
+    linear-gradient(90deg, var(--muted) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -349,30 +342,26 @@ textarea:focus-visible {
     transform: translateX(-50%);
   }
 }
+
 .animate-wave {
   animation: wave 15s linear infinite;
 }
 
 /* Liquid */
-
 .liquid-button {
   position: relative;
   overflow: hidden;
   --liquid-color: var(--primary);
   --liquid-text-color: var(--foreground);
-
   --liquid-fill-x: 0%;
   --liquid-fill-y: 0%;
-
   --liquid-delay-x: 0s;
   --liquid-delay-y: 0s;
   --liquid-delay-color: 0s;
-
   background: linear-gradient(var(--liquid-color) 0 0) no-repeat
       calc(200% - var(--liquid-fill-x, 0%)) 100% / 200% 2px,
     linear-gradient(var(--liquid-color) 0 0) no-repeat 0
       calc(0% + var(--liquid-fill-y, 100%)) / 100% var(--liquid-fill-y, 0%);
-
   transition: background-position 0.3s var(--liquid-delay-x),
     background-size 0.3s var(--liquid-delay-y),
     color 0.3s var(--liquid-delay-color);
@@ -381,10 +370,8 @@ textarea:focus-visible {
 /* Hover: X (ngang) trước, Y (dọc) sau */
 .liquid-button:hover {
   color: var(--background);
-
   --liquid-fill-x: 100%;
   --liquid-fill-y: 100%;
-
   --liquid-delay-x: 0s;
   --liquid-delay-y: 0.3s;
   --liquid-delay-color: 0.3s;
@@ -393,10 +380,8 @@ textarea:focus-visible {
 /* Default (rút lại): Y rút trước, X rút sau */
 .liquid-button:not(:hover) {
   color: var(--foreground);
-
   --liquid-fill-x: 0%;
   --liquid-fill-y: 0%;
-
   --liquid-delay-x: 0.3s;
   --liquid-delay-y: 0s;
   --liquid-delay-color: 0s;
@@ -423,7 +408,6 @@ textarea:focus-visible {
   from {
     background-position: -100% center;
   }
-
   to {
     background-position: 100% center;
   }

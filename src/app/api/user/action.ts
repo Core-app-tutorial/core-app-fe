@@ -16,9 +16,11 @@ export const getUserProfile = async (): Promise<Result<UserProfile | null>> => {
     };
   } catch (error: unknown) {
     let message = "An unknown error occurred";
+
     if (error instanceof AxiosError) {
       message = error.response?.data?.message || error.message;
     }
+
     return {
       isSuccess: false,
       message,

@@ -1,18 +1,22 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import React, { memo } from "react";
+import React from "react";
 import Link from "next/link";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { useScrollContext } from "../context/scroll-context";
-import { Separator } from "../ui/separator";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useAuthContext } from "../context/auth-context";
+import { useScrollContext } from "@/components/context/scroll-context";
+import { useAuthContext } from "@/components/context/auth-context";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
 
 interface UserProfileProps {
   user: { username: string; avatarUrl: string; email: string };
   isScrollDown?: boolean;
 }
 
-const UserProfileComponent: React.FC<UserProfileProps> = ({
+const UserProfile: React.FC<UserProfileProps> = ({
   user: { username, avatarUrl, email },
 }) => {
   const { isScrollDown } = useScrollContext();
@@ -80,4 +84,4 @@ const UserProfileComponent: React.FC<UserProfileProps> = ({
   );
 };
 
-export const UserProfile = memo(UserProfileComponent);
+export default UserProfile;

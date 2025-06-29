@@ -1,3 +1,4 @@
+import Background from "@/components/organisms/background";
 import AuthTemplate from "@/components/templates/auth-template";
 
 export default function AuthLayout({
@@ -5,5 +6,10 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <AuthTemplate>{children}</AuthTemplate>;
+  return (
+    <>
+      <Background />
+      <AuthTemplate>{children}</AuthTemplate>
+    </>
+  );
 }

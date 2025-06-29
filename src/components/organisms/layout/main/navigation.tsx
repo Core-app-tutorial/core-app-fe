@@ -5,13 +5,13 @@ import { Icon } from "@iconify/react";
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import Stack from "../atoms/stack";
-import { useAuthContext } from "../context/auth-context";
-import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
 import MenuSheet from "./menu-sheet";
-import ToggleTheme from "./toggle-theme";
-import { UserProfile } from "./user-profile";
+import { useAuthContext } from "@/components/context/auth-context";
+import Stack from "@/components/atoms/layout/stack";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import ToggleTheme from "../../toggle/toggle-theme";
+import UserProfile from "./user-profile";
 
 export default function Navigation() {
   const { isAuthenticated, user } = useAuthContext();
@@ -86,9 +86,9 @@ export default function Navigation() {
             ) : (
               <UserProfile
                 user={{
-                  username: "John Doe",
+                  username: user?.name || "Không xác định",
                   avatarUrl: "https://github.com/shadcn.png",
-                  email: "anhthtservice@gmail.com",
+                  email: user?.email || "Không xác định",
                 }}
               />
             )}
