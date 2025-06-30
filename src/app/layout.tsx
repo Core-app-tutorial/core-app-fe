@@ -32,7 +32,6 @@ export default function RootLayout({
             <ScrollProvider>
               <ThemeProvider>
                 {children}
-                {/* <SplashProvider>{children}</SplashProvider> */}
                 <Toaster />
               </ThemeProvider>
             </ScrollProvider>

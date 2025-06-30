@@ -10,7 +10,7 @@ import { useAuthContext } from "@/components/context/auth-context";
 import Stack from "@/components/atoms/layout/stack";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import ToggleTheme from "../../toggle/toggle-theme";
+import ToggleTheme from "../../../atoms/toggle/toggle-theme";
 import UserProfile from "./user-profile";
 
 export default function Navigation() {

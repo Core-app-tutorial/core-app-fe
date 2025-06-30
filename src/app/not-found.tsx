@@ -33,10 +33,10 @@ const NotFoundPage = async () => {
             />
           </div>
 
-          {/* 400 text overlay */}
+          {/* 404 text overlay */}
           <div className="absolute inset-0 flex items-start justify-center -top-10">
             <span className="text-7xl md:text-8xl font-bold text-muted-foreground/20 select-none dark:text-muted-foreground/90">
-              400
+              404
             </span>
           </div>
         </div>
@@ -44,7 +44,7 @@ const NotFoundPage = async () => {
         {/* Content section */}
         <section className="text-center space-y-6 max-w-lg mx-auto">
           <div className="space-y-2">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground ">
               Page Not Found
             </h1>
             <p className="text-muted-foreground text-lg">

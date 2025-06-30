@@ -1,11 +1,7 @@
-"use client";
+import ProductsPage from "@/components/screen/product/product-page";
 
 const KeyboardsPage = () => {
-  return (
-    <div>
-      <h1>Keyboards</h1>
-    </div>
-  );
+  return <ProductsPage />;
 };
 
 export default KeyboardsPage;

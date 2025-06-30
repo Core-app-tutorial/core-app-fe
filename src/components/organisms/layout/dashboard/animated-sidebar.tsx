@@ -38,7 +38,7 @@ export function AnimatedSidebar() {
   };
 
   return (
-    <Sidebar className="border-r bg-transparent dark:bg-transparent">
+    <Sidebar className="border-r bg-transparent dark:bg-transparent h-full">
       <SidebarHeader>
         <Logo />
       </SidebarHeader>

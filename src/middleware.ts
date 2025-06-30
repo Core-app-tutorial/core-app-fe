@@ -3,7 +3,6 @@ import { jwtDecode } from "jwt-decode";
 import { Role } from "./constants/enums/role";
 import { routeAccessConfig } from "./configs/route.config";
 import { DecodeToken } from "./features/auth/models/response";
-import { getUserProfile } from "./app/api/user/action";
 
 const authRoutes = ["/login", "/register"];
 const publicRoutes = [

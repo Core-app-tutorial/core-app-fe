@@ -7,7 +7,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { AnimatedSidebar } from "../organisms/layout/dashboard/animated-sidebar";
-import ToggleTheme from "../organisms/toggle/toggle-theme";
+import ToggleTheme from "../atoms/toggle/toggle-theme";
 import { DynamicBreadcrumb } from "../organisms/breadcrumb/dynamic";
 
 interface DashboardTemplateProps {
@@ -27,7 +27,9 @@ export function DashboardTemplate({ children }: DashboardTemplateProps) {
           </div>
           <ToggleTheme />
         </header>
-        <main className="container flex-1 p-4">{children}</main>
+        <main className="flex-1 p-2 bg-slate-50 dark:bg-background/50">
+          {children}
+        </main>
       </SidebarInset>
     </SidebarProvider>
   );

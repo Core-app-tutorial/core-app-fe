@@ -1,6 +1,6 @@
 "use client";
 
-import { FormInput } from "@/components/atoms/form-input";
+import { FormInput } from "@/components/molecule/forms/form-input";
 import Logo from "@/components/atoms/image/logo";
 import Stack from "@/components/atoms/layout/stack";
 import { WaveText } from "@/components/atoms/text/wave";

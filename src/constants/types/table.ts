@@ -1,29 +1,46 @@
 import type React from "react";
-export interface TableColumn<T = any> {
+export interface TableColumn<T = Record<string, unknown>> {
   key: keyof T;
   label: string;
   sortable?: boolean;
   filterable?: boolean;
-  render?: (value: any, row: T) => React.ReactNode;
+  width?: string;
+  render?: (value: T[keyof T], row: T) => React.ReactNode;
 }
 
-export interface TableState {
-  search: string;
-  sortBy: string;
-  sortOrder: "asc" | "desc";
-  filters: Record<string, string>;
+export interface FilterOption {
+  label: string;
+  value: string | number;
+}
+
+export interface FilterConfig {
+  key: string;
+  label: string;
+  type: "select" | "multiselect" | "date" | "daterange" | "text" | "number";
+  options?: FilterOption[];
+  placeholder?: string;
+}
+
+export interface SortConfig {
+  key: string;
+  direction: "asc" | "desc";
+}
+
+export interface PaginationConfig {
   page: number;
   pageSize: number;
+  total: number;
 }
 
-export interface TableActions {
-  setSearch: (search: string) => void;
-  setSorting: (sortBy: string, sortOrder: "asc" | "desc") => void;
-  setFilter: (key: string, value: string) => void;
-  clearFilters: () => void;
-  setPage: (page: number) => void;
-  setPageSize: (pageSize: number) => void;
-  reset: () => void;
+export interface TableParams {
+  search: string;
+  filters: Record<string, string | string[] | number | Date | [Date, Date]>;
+  sort: SortConfig | null;
+  pagination: PaginationConfig;
 }
 
-export type TableStore = TableState & TableActions;
+export interface TableData<T = Record<string, unknown>> {
+  items: T[];
+  total: number;
+  loading: boolean;
+}

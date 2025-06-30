@@ -1,51 +1,50 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { SortConfig } from "@/constants/types/table";
 
 interface SortButtonProps {
+  column: string;
   label: string;
-  sortKey: string;
-  currentSortBy: string;
-  currentSortOrder: "asc" | "desc";
-  onSort: (sortBy: string, sortOrder: "asc" | "desc") => void;
+  currentSort: SortConfig | null;
+  onSort: (sort: SortConfig | null) => void;
 }
 
-export const SortButton = ({
+export function SortButton({
+  column,
   label,
-  sortKey,
-  currentSortBy,
-  currentSortOrder,
+  currentSort,
   onSort,
-}: SortButtonProps) => {
-  const isActive = currentSortBy === sortKey;
+}: SortButtonProps) {
+  const isActive = currentSort?.key === column;
+  const direction = isActive ? currentSort.direction : null;
 
   const handleClick = () => {
-    if (isActive) {
-      const newOrder = currentSortOrder === "asc" ? "desc" : "asc";
-      onSort(sortKey, newOrder);
+    if (!isActive) {
+      onSort({ key: column, direction: "asc" });
+    } else if (direction === "asc") {
+      onSort({ key: column, direction: "desc" });
     } else {
-      onSort(sortKey, "asc");
+      onSort(null);
     }
   };
 
-  const getIcon = () => {
-    if (!isActive) return <ArrowUpDown className="ml-2 h-4 w-4" />;
-    return currentSortOrder === "asc" ? (
-      <ArrowUp className="ml-2 h-4 w-4" />
-    ) : (
-      <ArrowDown className="ml-2 h-4 w-4" />
-    );
-  };
+  const Icon = !isActive
+    ? ArrowUpDown
+    : direction === "asc"
+    ? ArrowUp
+    : ArrowDown;
 
   return (
     <Button
       variant="ghost"
+      size="sm"
+      className={`h-8 px-2 ${isActive ? "bg-accent" : ""}`}
       onClick={handleClick}
-      className="h-auto p-0 font-medium"
     >
       {label}
-      {getIcon()}
+      <Icon className="ml-2 h-3 w-3" />
     </Button>
   );
-};
+}

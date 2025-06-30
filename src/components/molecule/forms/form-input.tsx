@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/form";
 import React, { ReactNode } from "react";
 import { Control, FieldPath, FieldValues } from "react-hook-form";
+import IconInput from "@/components/atoms/input/with-icon";
 
 interface FormInputProps<T extends FieldValues>
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -38,30 +39,17 @@ export function FormInput<T extends FieldValues>({
       render={({ field }) => (
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
-          <div className="relative">
-            <FormControl>
-              <Input
-                {...props}
-                {...field}
-                type={type}
-                placeholder={placeholder}
-                autoComplete={autoComplete}
-                className={`peer ${iconLeft ? "ps-9" : ""} ${
-                  iconRight ? "pe-9" : ""
-                }`}
-              />
-            </FormControl>
-            {iconLeft && (
-              <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50">
-                {iconLeft}
-              </div>
-            )}
-            {iconRight && (
-              <div className="absolute inset-y-0 end-0 flex items-center justify-center pe-3">
-                {iconRight}
-              </div>
-            )}
-          </div>
+          <FormControl>
+            <IconInput
+              {...field}
+              type={type}
+              placeholder={placeholder}
+              autoComplete={autoComplete}
+              iconLeft={iconLeft}
+              iconRight={iconRight}
+              {...props}
+            />
+          </FormControl>
           <FormMessage />
         </FormItem>
       )}
