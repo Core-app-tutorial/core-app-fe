@@ -1,15 +1,8 @@
+import CustomerPage from "@/components/screen/customer/customer-page";
 import React from "react";
 
-const CustomerPage = () => {
-  return (
-    <div>
-      <h1>Customer Page</h1>
-      <p>
-        This is the customer page where you can manage customer information.
-      </p>
-      {/* Add more content or components related to customer management here */}
-    </div>
-  );
+const Page = () => {
+  return <CustomerPage />;
 };
 
-export default CustomerPage;
+export default Page;

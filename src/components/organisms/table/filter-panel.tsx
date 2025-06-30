@@ -97,8 +97,8 @@ export function FilterPanel({
   }).length;
 
   const handleFilterChange = (
-    key: string,
-    value: string | string[] | number | Date | [Date, Date]
+    key?: string,
+    value?: string | string[] | number | Date | [Date, Date]
   ) => {
     if (
       value === "" ||
@@ -106,9 +106,13 @@ export function FilterPanel({
       value === undefined ||
       (Array.isArray(value) && value.length === 0)
     ) {
-      onFilterRemove(key);
+      if (key !== undefined) {
+        onFilterRemove(key);
+      }
     } else {
-      onFilterChange(key, value);
+      if (key !== undefined) {
+        onFilterChange(key, value);
+      }
     }
   };
 
@@ -204,16 +208,20 @@ export function FilterPanel({
                 },
               }}
             >
-              {filterConfigs.map((config) => (
-                <motion.div key={config.key} variants={filterItemVariants}>
-                  <FilterItem
-                    config={config}
-                    value={activeFilters[config.key]}
-                    onChange={(value) => handleFilterChange(config.key, value)}
-                    onRemove={() => onFilterRemove(config.key)}
-                  />
-                </motion.div>
-              ))}
+              {filterConfigs.map((config) =>
+                config.key !== undefined ? (
+                  <motion.div key={config.key} variants={filterItemVariants}>
+                    <FilterItem
+                      config={config}
+                      value={activeFilters[config.key]}
+                      onChange={(value) =>
+                        handleFilterChange(config.key, value)
+                      }
+                      onRemove={() => onFilterRemove(config.key)}
+                    />
+                  </motion.div>
+                ) : null
+              )}
             </motion.div>
           )}
 

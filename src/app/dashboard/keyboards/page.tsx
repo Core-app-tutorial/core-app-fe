@@ -1,4 +1,4 @@
-import ProductsPage from "@/components/screen/product/product-page";
+import ProductsPage from "@/components/screen/keyboards/keyboards-page";
 
 const KeyboardsPage = () => {
   return <ProductsPage />;

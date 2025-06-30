@@ -58,7 +58,7 @@ export function ModernPagination({
   const pageNumbers = getPageNumbers();
 
   return (
-    <div className="flex flex-row-reverse items-center justify-between w-full px-4 py-3 bg-card rounded-2xl border border-input">
+    <div className="flex flex-row-reverse items-center justify-between w-full px-4 py-3 bg-card rounded-md border border-input">
       {/* Left: Results info */}
       <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
         <span className="whitespace-nowrap">
@@ -101,7 +101,7 @@ export function ModernPagination({
         </Button>
 
         {/* Page numbers */}
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           {pageNumbers.map((pageNum, index) => (
             <div key={`${pageNum}-${index}`} className="relative">
               {pageNum === "..." ? (

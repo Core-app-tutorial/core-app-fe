@@ -1,7 +1,8 @@
+import AccessoriesPage from "@/components/screen/accessories/accessories-page";
 import React from "react";
 
-const AccessoriesPage = () => {
-  return <div></div>;
+const Page = () => {
+  return <AccessoriesPage />;
 };
 
-export default AccessoriesPage;
+export default Page;

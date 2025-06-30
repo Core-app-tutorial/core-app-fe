@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type React from "react";
-export interface TableColumn<T = Record<string, unknown>> {
+export interface TableColumn<T = Record<string, any>> {
   key: keyof T;
   label: string;
   sortable?: boolean;
@@ -14,9 +15,9 @@ export interface FilterOption {
 }
 
 export interface FilterConfig {
-  key: string;
-  label: string;
-  type: "select" | "multiselect" | "date" | "daterange" | "text" | "number";
+  key?: string;
+  label?: string;
+  type?: "select" | "multiselect" | "date" | "daterange" | "text" | "number";
   options?: FilterOption[];
   placeholder?: string;
 }
@@ -39,7 +40,7 @@ export interface TableParams {
   pagination: PaginationConfig;
 }
 
-export interface TableData<T = Record<string, unknown>> {
+export interface TableData<T = Record<string, any>> {
   items: T[];
   total: number;
   loading: boolean;

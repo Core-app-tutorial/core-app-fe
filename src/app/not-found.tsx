@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import ThemeImage from "@/components/atoms/image/logo";
 
 const NotFoundPage = async () => {
   const cookie = await cookies();
@@ -19,16 +20,19 @@ const NotFoundPage = async () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 space-y-8">
+      <div className="relative z-10 ">
         {/* Image with 400 overlay */}
         <div className="relative">
           <div className="float-animation">
-            <Image
-              src="/not-found.svg"
+            <ThemeImage
+              className="size-70 sm:size-96 object-contain mx-auto drop-shadow-sm"
+              maxHeight="400px"
+              maxWidth="400px"
               alt="Not Found Illustration"
+              lightSrc="/not-found-light.svg"
+              darkSrc="/not-found-dark.svg"
               width={400}
               height={400}
-              className="w-80 h-80 md:w-96 md:h-96 object-contain mx-auto drop-shadow-sm"
               priority
             />
           </div>
@@ -54,7 +58,7 @@ const NotFoundPage = async () => {
           </div>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <div className="flex sm:flex-row gap-4 justify-center pt-4 mx-2 sm:mx-0 flex-col-reverse">
             <Button asChild className="liquid-button px-8 py-3 font-medium">
               <Link href="/">← Go Home</Link>
             </Button>

@@ -1,7 +1,6 @@
 "use client";
 
 import { FormInput } from "@/components/molecule/forms/form-input";
-import Logo from "@/components/atoms/image/logo";
 import Stack from "@/components/atoms/layout/stack";
 import { WaveText } from "@/components/atoms/text/wave";
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import { EyeOff, EyeIcon, Mail, Lock, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ThemeImage from "@/components/atoms/image/logo";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 space-y-4">
-      <Logo />
+      <ThemeImage />
 
       <h1 className="text-3xl font-bold">Welcome Back</h1>
 
